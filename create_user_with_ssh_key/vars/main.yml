@@ -1,0 +1,7 @@
+---
+
+shell: /bin/bash
+key: "{{ lookup('file', '/home/user/.ssh/id_rsa.pub') }}"
+user_details: 
+        - { username: 'testuser5', gr: 'sudo' }
+        - { username: 'testuser6', gr: 'sudo' }

@@ -1,0 +1,2 @@
+---
+key: "{{ lookup('file', '/home/user/.ssh/id_rsa.pub') }}"

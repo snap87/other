@@ -1,0 +1,14 @@
+---
+
+- name: user create
+  user: 
+   name: "{{ item.username }}"
+   groups: "{{ item.gr }}"
+   shell: "{{ shell }}"
+  with_items: "{{user_details }}" 
+- name: ssh add
+  authorized_key:
+                user: "{{ item.username }}"
+                key: "{{ key }}"
+               
+  with_items: "{{user_details }}" 
