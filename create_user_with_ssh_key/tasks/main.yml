@@ -5,10 +5,25 @@
    name: "{{ item.username }}"
    groups: "{{ item.gr }}"
    shell: "{{ shell }}"
-  with_items: "{{user_details }}" 
+  with_items: "{{user_details }}"
+
 - name: ssh add
   authorized_key:
                 user: "{{ item.username }}"
                 key: "{{ key }}"
-               
-  with_items: "{{user_details }}" 
+  with_items: "{{user_details }}"
+
+- name: password auth disable
+  lineinfile:
+   path: "{{ sshd_config }}"
+   regexp: '^(#/s*)?PasswordAuthentication '
+   line: 'PasswordAuthentication no'
+  notify: restart sshd
+
+- name: Disable remote root login
+  lineinfile: 
+    path: "{{ sshd_config }}" 
+    regexp: '(^#/s*)?PermitRootLogin' 
+    line: 'PermitRootLogin no'
+  notify: restart sshd
+

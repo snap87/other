@@ -2,6 +2,8 @@
 
 shell: /bin/bash
 key: "{{ lookup('file', '/home/user/.ssh/id_rsa.pub') }}"
+sshd_config: /etc/ssh/sshd_config
+sshd: ssh
 user_details: 
-        - { username: 'testuser5', gr: 'sudo' }
-        - { username: 'testuser6', gr: 'sudo' }
+        - { username: 'testuser9', gr: 'sudo' }
+        - { username: 'testuser10', gr: 'sudo' }
