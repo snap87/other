@@ -1,2 +1,4 @@
 ---
 # handlers file for create_user_with_ssh_key
+- name: restart sshd
+  service: name={{ sshd }} state=restarted
